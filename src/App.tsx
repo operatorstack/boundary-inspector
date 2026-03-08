@@ -54,12 +54,12 @@ export function App() {
 
   return (
     <div className="app">
-      <header className="header">
+      <header className="header" id="shot-header" data-shot="header">
         <h1>Boundary Inspector</h1>
         <p>Run to Attempts to Events</p>
       </header>
 
-      <section className="controls">
+      <section className="controls" id="shot-controls" data-shot="controls">
         <textarea value={input} onChange={(event) => setInput(event.target.value)} />
         <button onClick={loadJSON}>Load JSON</button>
         <input value={wsURL} onChange={(event) => setWsURL(event.target.value)} />
@@ -71,8 +71,8 @@ export function App() {
         {parseError ? <p className="error">{parseError}</p> : null}
       </section>
 
-      <section className="layout">
-        <aside className="panel">
+      <section className="layout" id="shot-layout" data-shot="layout">
+        <aside className="panel" id="shot-runs-list" data-shot="runs-list">
           <h2>Runs</h2>
           {runs.map((run) => (
             <button
@@ -88,7 +88,7 @@ export function App() {
           ))}
         </aside>
 
-        <main className="panel">
+        <main className="panel" id="shot-run-inspector" data-shot="run-inspector">
           <h2>Run Inspector</h2>
           <div className="summary">
             <span>Model: {selectedRun?.model ?? "-"}</span>
@@ -108,7 +108,7 @@ export function App() {
           </div>
         </main>
 
-        <aside className="panel">
+        <aside className="panel" id="shot-event-details" data-shot="event-details">
           <h2>Event Details</h2>
           <pre>{JSON.stringify(selectedEvent ?? {}, null, 2)}</pre>
         </aside>
